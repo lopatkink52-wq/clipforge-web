@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: clipforge-web
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile.web
+    healthCheckPath: /health
+    envVars:
+      - key: WHISPER_MODEL
+        value: tiny
+      - key: WHISPER_DEVICE
+        value: cpu
+      - key: WHISPER_COMPUTE_TYPE
+        value: int8
+      - key: WEB_MAX_UPLOAD_MB
+        value: "150"
+      - key: MAX_URL_MB
+        value: "512"
+      - key: MAX_CLIPS
+        value: "5"
+      - key: MAX_CONCURRENT_JOBS
+        value: "1"

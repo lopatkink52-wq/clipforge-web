@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: clipforge-bot
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: WEBHOOK_PATH
+        value: clipforge-webhook
+      - key: WEBHOOK_SECRET
+        generateValue: true
+      - key: WHISPER_MODEL
+        value: tiny
+      - key: WHISPER_DEVICE
+        value: cpu
+      - key: WHISPER_COMPUTE_TYPE
+        value: int8
+      - key: MAX_UPLOAD_MB
+        value: "20"
+      - key: MAX_URL_MB
+        value: "512"
+      - key: MAX_CLIPS
+        value: "5"
